@@ -1,0 +1,17 @@
+{
+  "name": "week8assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumber-js --publish-quiet"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "chai": "^4.2.0",
+    "cucumber-html-report": "^0.6.5"
+  }
+}
