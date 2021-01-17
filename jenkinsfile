@@ -1,23 +1,29 @@
 pipeline {
-   agent any
-
-   stages {
-      stage('Hello') {
-         steps {
-            echo 'This is a build'
-            echo 'This is buil 2'
-         }
-      }
-      stage('Test'){
-          steps{
-              echo 'this is a test'
-          }
-      }
-      stage('Deploy'){
-          steps{
-              echo 'This is a deploy'
-          }
-      }
-   }
-   
+    agent any
+    stages {
+       
+    
+        stage('Install') {
+            steps {
+                script {
+                      bat 'npm install'
+                                }
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'npm test'
+            }
+        }
+        stage('Generate Report') {
+            steps {
+                bat 'npm run report'
+            }
+        }
+        stage('Publish Report') {
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+            }
+        }
+    }
 }
